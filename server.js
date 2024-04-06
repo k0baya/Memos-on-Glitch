@@ -1,11 +1,11 @@
 const express = require("express");
 const app = express();
-// const port = process.env.PORT || 3000;
 const port = 3000;
 const PROJECT_DOMAIN = process.env.PROJECT_DOMAIN;
 var exec = require("child_process").exec;
 const os = require("os");
 const { createProxyMiddleware } = require("http-proxy-middleware");
+var request = require("request");
 var fs = require("fs");
 var path = require("path");
 
@@ -20,6 +20,18 @@ app.get("/status", (req, res) => {
         }
     });
 });
+
+// 获取系统监听端口
+app.get("/listen", function (req, res) {
+    let cmdStr = "ss -nltp";
+    exec(cmdStr, function (err, stdout, stderr) {
+      if (err) {
+        res.type("html").send("<pre>命令行执行错误：\n" + err + "</pre>");
+      } else {
+        res.type("html").send("<pre>获取系统监听端口：\n" + stdout + "</pre>");
+      }
+    });
+  });
 
 //获取系统版本、内存信息
 app.get("/info", (req, res) => {
@@ -51,7 +63,7 @@ app.get("/test", (req, res) => {
 app.use(
     "/" + "*",
     createProxyMiddleware({
-        target: "http://127.0.0.1:5244/", // 需要跨域处理的请求地址
+        target: "http://127.0.0.1:8080/", // 需要跨域处理的请求地址
         changeOrigin: true, // 默认false，是否需要改变原始主机头为目标URL
         ws: true,
         logLevel: "error",
@@ -68,7 +80,7 @@ function keepalive() {
     // 2.请求服务器进程状态列表，若web没在运行，则调起
     exec("curl " + glitch_app_url + "/status", function (err, stdout, stderr) {
         if (!err) {
-            if (stdout.indexOf("./app.js server --no-prefix") != -1) {
+            if (stdout.indexOf("./app.js server") != -1) {
             } else {
                 //web未运行，命令行调起
                 exec("/bin/bash start.sh server");
