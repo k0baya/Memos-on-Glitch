@@ -1,14 +1,12 @@
-# Alist-on-Glitch
+# Synctv-on-Glitch
 
 ## 概述
 
-本项目用于在 Glitch 免费服务上部署 Alist。
+本项目用于在 Glitch 免费服务上部署 Synctv。
 
 ## 注意
 
  **请勿滥用，账号封禁风险自负。**
-
- Webdav 功能可能工作不正常。
  
 ## 变量
 
@@ -63,20 +61,18 @@
 
 点击页面下方 LOGS 即可得到初始密码。
 
-点击页面下方 TERMINAL，即可执行 Alist 命令:
+点击页面下方 TERMINAL，即可执行 Synctv 命令:
 
 ```
-# 随机生成管理员密码
-bash start.sh admin random
-
-# 手动设置管理员密码,`NEW_PASSWORD`是指你需要设置的密码
-bash start.sh admin set NEW_PASSWORD
-
-# 重启 Alist
-bash start.sh server
-
-# 查看 Alist 版本
-bash start.sh version
+bash start.sh admin       # admin
+bash start.sh conf        # init or check
+bash start.sh help        # Help about any command
+bash start.sh root        # root
+bash start.sh self-update # self-update
+bash start.sh server      # Start synctv-server
+bash start.sh setting     # setting
+bash start.sh user        # user
+bash start.sh version     # Print the version number of Sync TV Server
 ```
 
 访问 项目网址/status，查看运行进程。
@@ -89,3 +85,4 @@ https://github.com/wy580477/PaaS-Related/blob/main/CF_Workers_Reverse_Proxy_chs_
 
 - [alist-org/alist](https://github.com/alist-org/alist)
 - [glitch-trojan](https://github.com/hrzyang/glitch-trojan)
+- [Alist-on-Glitch](https://github.com/wy580477/Alist-on-Glitch)
