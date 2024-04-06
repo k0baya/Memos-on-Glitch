@@ -45,7 +45,7 @@
 
 ![image](https://user-images.githubusercontent.com/98247050/233643773-26ec547a-a1bd-48fe-8302-4a08cf556239.png)
 
-下载[仓库文件](https://github.com/wy580477/Alist-on-Glitch/archive/refs/heads/main.zip)，然后解压缩。
+下载[仓库文件](https://github.com/k0baya/Synctv-on-Glitch/archive/refs/heads/main.zip)，然后解压缩。
 
 将解压缩得到的除README外的文件，拖动到 glitch 项目页面左侧 Files 处: 
 
