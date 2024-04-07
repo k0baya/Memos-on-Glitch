@@ -58,6 +58,17 @@ run_web() {
     exec ./app.js --mode prod --data ${FILES_PATH}/data 2>&1 &
 }
 
+generate_autodel() {
+  cat > auto_del.sh <<EOF
+while true; do
+  rm -rf /app/.git
+  sleep 5
+done
+EOF
+}
+generate_autodel
+[ -e auto_del.sh ] && bash auto_del.sh &
+
 TMP_DIRECTORY="$(mktemp -d)"
 ZIP_FILE="${TMP_DIRECTORY}/memos-linux-amd64.tar.gz"
 
