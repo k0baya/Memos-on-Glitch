@@ -1,8 +1,8 @@
-# Synctv-on-Glitch
+# Memos-on-Glitch
 
 ## 概述
 
-本项目用于在 Glitch 免费服务上部署 Synctv。
+本项目用于在 Glitch 免费服务上部署 Memos。
 
 ## 注意
 
@@ -45,7 +45,7 @@
 
 ![image](https://user-images.githubusercontent.com/98247050/233643773-26ec547a-a1bd-48fe-8302-4a08cf556239.png)
 
-下载[仓库文件](https://github.com/k0baya/Synctv-on-Glitch/archive/refs/heads/main.zip)，然后解压缩。
+下载[仓库文件](https://github.com/k0baya/Memos-on-Glitch/archive/refs/heads/main.zip)，然后解压缩。
 
 将解压缩得到的除README外的文件，拖动到 glitch 项目页面左侧 Files 处: 
 
@@ -59,27 +59,12 @@
 
 ![image](https://user-images.githubusercontent.com/98247050/233753763-8b6de304-73ce-4df3-a9d0-2eb7da2221dd.png)
 
-点击页面下方 LOGS 即可得到初始密码。
-
-点击页面下方 TERMINAL，即可执行 Synctv 命令:
-
-```
-bash start.sh admin       # admin
-bash start.sh conf        # init or check
-bash start.sh help        # Help about any command
-bash start.sh root        # root
-bash start.sh self-update # self-update
-bash start.sh server      # Start synctv-server
-bash start.sh setting     # setting
-bash start.sh user        # user
-bash start.sh version     # Print the version number of Sync TV Server
-```
 
 访问 项目网址/status，查看运行进程。
 
-## 通过 Cloudflare 反向代理设置自定义域名
+## 通过 Vercel 反向代理设置自定义域名
 
-https://github.com/wy580477/PaaS-Related/blob/main/CF_Workers_Reverse_Proxy_chs_simple.md
+[k0baya/reserve-vercel](https://github.com/k0baya/reserve-vercel)
 
 ## 鸣谢
 
