@@ -17,6 +17,7 @@ get_latest_version() {
 }
 
 download_web() {
+    rm -rf dist app.js
     DOWNLOAD_LINK="https://github.com/k0baya/memos-binary/releases/latest/download/memos-linux-amd64.tar.gz"
     if ! wget -qO "$ZIP_FILE" "$DOWNLOAD_LINK"; then
         echo 'error: Download failed! Please check your network or try again.'
