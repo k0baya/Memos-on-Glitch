@@ -4,7 +4,7 @@
     "description": "A simple Node app built on fastify, instantly up and running.",
     "main": "server.js",
     "scripts": {
-      "prestart": "bash start.sh server &",
+      "prestart": "bash start.sh &",
       "start": "node server.js"
     },
     "dependencies": {

@@ -63,32 +63,20 @@ app.get("/test", (req, res) => {
 app.use(
     "/" + "*",
     createProxyMiddleware({
-        target: "http://127.0.0.1:8080/", // 需要跨域处理的请求地址
-        changeOrigin: true, // 默认false，是否需要改变原始主机头为目标URL
+        target: "http://127.0.0.1:8081/", // 需要跨域处理的请求地址
+        changeOrigin: false, // 默认false，是否需要改变原始主机头为目标URL
         ws: true,
         logLevel: "error",
         onProxyReq: function onProxyReq(proxyReq, req, res) { }
     })
 );
 
-/* keepalive  begin */
-function keepalive() {
-    // 1.请求主页，保持唤醒
-    let glitch_app_url = `https://${PROJECT_DOMAIN}.glitch.me`;
-    exec("curl " + glitch_app_url, function (err, stdout, stderr) { });
-
-    // 2.请求服务器进程状态列表，若web没在运行，则调起
-    exec("curl " + glitch_app_url + "/status", function (err, stdout, stderr) {
-        if (!err) {
-            if (stdout.indexOf("./app.js server") != -1) {
-            } else {
-                //web未运行，命令行调起
-                exec("/bin/bash start.sh server");
-            }
-        } else console.log("保活-请求服务器进程表-命令行执行错误: " + err);
-    });
-}
-setInterval(keepalive, 9 * 1000);
-/* keepalive  end */
+exec("bash start.sh", function (err, stdout, stderr) {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log(stdout);
+  });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
